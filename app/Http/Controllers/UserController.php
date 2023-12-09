@@ -21,8 +21,7 @@ class UserController extends Controller
             return redirect()->route('vehicles.index');
         } else {
             // Usuario no encontrado o la contraseña es incorrecta
-            return redirect()->route('index')->with('error', 'Correo o contraseña incorrectos');
-            
+            return redirect()->route('login')->with('error', 'Correo o contraseña incorrectos');
         }
     }
 
@@ -61,14 +60,5 @@ class UserController extends Controller
         } 
 
         return redirect()->route('login');
-    }
-    public function showProfile()
-    {
-        $user = Auth::user();
-
-        if (!$user) {
-            return redirect()->route('login');
-        }
-        return view('userRegister.user', ['user' => $user]);
     }
 }
